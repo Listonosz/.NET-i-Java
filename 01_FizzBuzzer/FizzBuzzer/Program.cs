@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace FizzBuzzer
+namespace FizzBuzz
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<int> numbers = new List<int>() {
+                354   
+            };
+            FizzBuzzer.MillNumbers(numbers);
         }
     }
 }
