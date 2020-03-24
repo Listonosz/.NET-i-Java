@@ -8,3 +8,8 @@
 /FizzBuzzer/bin/Debug/netcoreapp3.1
 /FizzBuzzer/obj
 /.vs
+/01_FizzBuzzer/FizzBuzzer.NUnitTests/obj
+/01_FizzBuzzer/FizzBuzzer.NUnitTests/bin/Debug/netcoreapp3.1
+/01_FizzBuzzer/FizzBuzzer/.vs/FizzBuzzer
+/01_FizzBuzzer/FizzBuzzer/bin/Debug/netcoreapp3.1
+/01_FizzBuzzer/FizzBuzzer/obj
