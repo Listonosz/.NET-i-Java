@@ -3,3 +3,8 @@
 ################################################################################
 
 /FizzBuzzer.NUnitTests/bin/Debug/netcoreapp3.1
+/FizzBuzzer.NUnitTests/obj
+/FizzBuzzer/.vs/FizzBuzzer/v16
+/FizzBuzzer/bin/Debug/netcoreapp3.1
+/FizzBuzzer/obj
+/.vs
