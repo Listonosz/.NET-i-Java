@@ -50,7 +50,7 @@ namespace FizzBuzz.NUnitTests
         [Test]
         public void If5and3InNumberReturnFizzBuzz()
         {
-            List<int> numbers = new List<int>() { 354 };
+            List<int> numbers = new List<int>() { 3535 };
             List<string> expectedResults = new List<string>() { "FizzBuzz" };
             List<string> actualResluts = FizzBuzzer.MillNumbers(numbers);
             Assert.AreEqual(expectedResults[0], actualResluts[0]);
