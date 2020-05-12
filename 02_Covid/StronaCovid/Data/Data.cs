@@ -11,7 +11,7 @@ namespace StronaCovid.Data
 {
     public class Data
     {
-        public void parsing()
+        public void Parsing()
         {
             string namecsv = "stats.csv";
             string namejson = "stats.json";

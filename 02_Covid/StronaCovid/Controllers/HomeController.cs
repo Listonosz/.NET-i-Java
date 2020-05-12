@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StronaCovid.Models;
+using ContosoCrafts.WebSite.Services;
 
 namespace StronaCovid.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public JsonFileStatisticsService ProductService;
+        public HomeController(ILogger<HomeController> logger, 
+            JsonFileStatisticsService productService)
         {
             _logger = logger;
         }
