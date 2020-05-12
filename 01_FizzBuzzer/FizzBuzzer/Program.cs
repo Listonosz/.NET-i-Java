@@ -8,7 +8,7 @@ namespace FizzBuzz
         static void Main(string[] args)
         {
             List<int> numbers = new List<int>() {
-                350   
+                353535
             };
             FizzBuzzer.MillNumbers(numbers);
         }

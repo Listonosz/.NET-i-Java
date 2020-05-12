@@ -15,6 +15,7 @@ namespace FizzBuzz.NUnitTests
             List<string> actualResluts = FizzBuzzer.MillNumbers(numbers);
             Assert.AreEqual(expectedResults[0], actualResluts[0]);
         }
+        /*
         [Test]
         public void IfDividedBy7ReturnBazzinga()
         {

@@ -20,7 +20,7 @@ namespace FizzBuzz
                 if (numbers[i] % 7 == 0)
                 {
                     result.Add("Bazzinga");
-                    break;
+                   // break;
                     continue;
                 }
                 char[] foo = intTochar(numbers[i]);
