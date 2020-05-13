@@ -4,6 +4,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\dataset\**" />
+    <Content Remove="wwwroot\dataset\**" />
+    <EmbeddedResource Remove="wwwroot\dataset\**" />
+    <None Remove="wwwroot\dataset\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Records.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
 
 
 </Project>

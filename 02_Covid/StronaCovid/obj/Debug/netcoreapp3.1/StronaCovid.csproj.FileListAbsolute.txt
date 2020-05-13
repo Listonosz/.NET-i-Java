@@ -12,7 +12,6 @@ C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\bin\Debug\n
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.csprojAssemblyReference.cache
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\staticwebassets\StronaCovid.StaticWebAssets.Manifest.cache
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\staticwebassets\StronaCovid.StaticWebAssets.xml
-C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.RazorAssemblyInfo.cache
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.RazorAssemblyInfo.cs
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.AssemblyInfoInputs.cache
@@ -33,3 +32,4 @@ C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\n
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.dll
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.pdb
 C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\obj\Debug\netcoreapp3.1\StronaCovid.csproj.CopyComplete
+C:\Users\Student241165\source\repos\.NET-i-Java\02_Covid\StronaCovid\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

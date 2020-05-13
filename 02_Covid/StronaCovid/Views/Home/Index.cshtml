@@ -1,7 +1,17 @@
-﻿@{
+﻿@model StronaCovid.Models.Records
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
+    <tbody>
+@foreach (var item in Model.records){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem=> item.countriesAndTerritories)
+            </td>
+        </tr>
+}
+    </tbody>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
