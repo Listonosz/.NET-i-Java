@@ -24,6 +24,11 @@ namespace Covid.Models
         public string countryterritoryCode { get; set; }
         public ulong? popData2018 { get; set; }
         public string ContinentExp { get; set; }
+
+        internal object Sum(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

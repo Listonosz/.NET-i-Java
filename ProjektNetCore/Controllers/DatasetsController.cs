@@ -36,13 +36,19 @@ namespace Covid.Controllers
             var countrySet = _context.Datas
                 .Where(b => b.countriesAndTerritories.Contains(country))
                 .OrderBy(o => o.DataRep).ToList();
-
+            
+            var sells = _context.Datas
+        .Where(b => b.countriesAndTerritories.Contains(country))
+         .GroupBy(a => a.countriesAndTerritories)
+        .Select (a => new { Amount = a.Sum(a => a.cases) })
+        .ToList();
+    
             var cases = countrySet.Select(o => o.cases).ToArray();
             var date = countrySet.Select(d => d.DataRep).ToArray();
-            var existing = cases.ToArray().Aggregate((sum, val) => sum + val);
+            var exist = sells.Select(d => d.Amount).ToArray();
             List<object> list = new List<object>();
             list.Add(cases);
-            list.Add(existing);
+            list.Add(exist);
             list.Add(date);
             return Json(list);
         }
