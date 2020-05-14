@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Covid.Models.Dataset>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.month)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cases)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deaths)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.countriesAndTerritories)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.geoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.countryterritoryCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.popData2018)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContinentExp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cases)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deaths)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.countriesAndTerritories)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.geoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.countryterritoryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.popData2018)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContinentExp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
