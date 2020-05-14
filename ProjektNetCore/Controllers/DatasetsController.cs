@@ -25,6 +25,42 @@ namespace Covid.Controllers
             return View(await _context.Datas.ToListAsync());
         }
 
+ 
+        public IActionResult Wykres()
+        {
+            return View("Wykres");
+
+        }
+        public IActionResult NewToExisting(string country = "Poland")
+        {
+            var countrySet = _context.Datas
+                .Where(b => b.countriesAndTerritories.Contains(country))
+                .OrderBy(o => o.DataRep).ToList();
+
+            var cases = countrySet.Select(o => o.cases).ToArray();
+            var date = countrySet.Select(d => d.DataRep).ToArray();
+            var existing = cases.ToArray().Aggregate((sum, val) => sum + val);
+            List<object> list = new List<object>();
+            list.Add(cases);
+            list.Add(existing);
+            list.Add(date);
+            return Json(list);
+        }
+
+        public IActionResult Data(string country="Poland")
+        {
+
+                var countrySet = _context.Datas
+                    .Where(b => b.countriesAndTerritories.Contains(country))
+                    .OrderByDescending(o=>o.DataRep).ToList();
+
+            var cases = countrySet.Select(o => o.cases).ToArray();
+            var date = countrySet.Select(d => d.DataRep).ToArray();
+            List<object> list = new List<object>();
+            list.Add(cases);
+            list.Add(date);
+            return Json(list);
+        }
         // GET: Datasets/Details/5
         public async Task<IActionResult> Details(uint? id)
         {

@@ -1,7 +1,68 @@
-﻿
-@{
-    ViewData["Title"] = "Wykres";
+﻿<canvas id="canvas" width="400" height="400"></canvas>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" integrity="sha256-arMsf+3JJK2LoTGqxfnuJPFTU4hAK57MtIPdFpiHXOU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <script>
+        function GetJSON_Simple() {
+            var resp = [];
+            $.ajax({
+                type: "GET",
+                url: '/Datasets/Data',
+                async: false,
+                contentType: "application/json",
+                success: function (data) {
+                    resp.push(data);
+                },
+                error: function (req, status, error) {
+                    // do something with error
+                    alert("error");
+                }
+            });
+            return resp;
+        }
+        var simpleData = GetJSON_Simple();
+        var ctx = document.getElementById("canvas")
+        var lineChartData = {
+            labels: simpleData[1],
+            datasets: [{
+                label: 'Sucess',
+                borderColor: "MediumSeaGreen",
+                backgroundColor: "MediumSeaGreen",
+                fill: false,
+                data: simpleData[0],
+            }]
+        };
+
+        var ctx_simple = document.getElementById('myChart_simple'); 
+     var myChart_simple = new Chart(ctx_simple, {
+     type: 'line',
+     data: {
+         labels: simpleData[1],
+         datasets: [{
+             label: 'COUNT',
+             backgroundColor: 'rgba(255, 99, 132, 0.2)',
+             borderColor: 'rgb(255, 99, 132)',
+             borderWidth: 1,
+             data: simpleData[0]
+         }
+         ]
+     },
+     options: {
+         scales: {
+             xAxes: [{
+                 stacked: true
+             }],
+             yAxes: [{
+                 stacked: false
+             }]
+         },
+
+     }
+ }); 
+
+    </script>
 }
-
-<h1>Wykres</h1>
-
