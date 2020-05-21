@@ -1,4 +1,5 @@
 ﻿<canvas id="myChart_simple"></canvas>
+<p id="test"></p>
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
@@ -21,36 +22,32 @@
                     resp.push(data);
                 },
                 error: function (req, status, error) {
-                    // do something with error
-                    alert("error");
+                    alert("Error");
                 }
             });
             return resp;
         }
         function getSpecificData(countryName) {
-            let SpecificData = [];
+            var SpecificData = [];
             tmp = GetJSON_Simple(countryName);
             SpecificData[0] = tmp[0][0]; //new cases - cured
             SpecificData[1] = tmp[0][1]; // dates
             for (let i = 0; i < SpecificData[1].length; i++) {
                 SpecificData[1][i] = SpecificData[1][i].slice(0, 10);
             }
-            let sumCases = 0;
-            for (let i = 0; i < SpecificData[0].length; i++) {
-                sumCases = SpecificData[0][i] + sumCases;
-                SpecificData[0][i] = sumCases;
-            }
             return SpecificData;
         }
 
         let defaultCountries = ["Poland", "Germany", "France", "Spain", "Russia", "China"];
         testCountry = getSpecificData(defaultCountries[0]);
+        var new_array = [];
+        testCountry[0].reduce(function (a, b, i) { return new_array[i] = a + b; }, 0);
         var ctx_simple = document.getElementById('myChart_simple');
 
         var myChart_simple = new Chart(ctx_simple, {
             type: 'line',
             data: {
-                labels: testCountry[1],
+                labels: new_array,
                 datasets: [{
                     label: "Polska",
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -63,13 +60,15 @@
             options: {
                 scales: {
                     xAxes: [{
-                        stacked: true,
+                        stacked: false,
                     }],
                     yAxes: [{
-                        stacked: false
-                        //ticks: {
-                        //    suggestedMax: 1000
-                        //}
+                        stacked: false,
+                        type: "logarithmic",
+                        ticks: {
+                            suggestedMax: 10000,
+                            suggestedMin: 0,
+                        }
                     }]
                 },
 
