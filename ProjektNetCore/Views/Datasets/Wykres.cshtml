@@ -1,4 +1,4 @@
-﻿<canvas id="canvas" width="400" height="400"></canvas>
+﻿<canvas id="myChart_simple"></canvas>
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
     <script>
-        function GetJSON_Simple() {
+        function GetJSON_Simple(countryName) {
             var resp = [];
             $.ajax({
                 type: "GET",
+                data: {
+                    country: countryName,
+                },
                 url: '/Datasets/Data',
                 async: false,
                 contentType: "application/json",
@@ -24,45 +27,54 @@
             });
             return resp;
         }
-        var simpleData = GetJSON_Simple();
-        var ctx = document.getElementById("canvas")
-        var lineChartData = {
-            labels: simpleData[1],
-            datasets: [{
-                label: 'Sucess',
-                borderColor: "MediumSeaGreen",
-                backgroundColor: "MediumSeaGreen",
-                fill: false,
-                data: simpleData[0],
-            }]
-        };
+        function getSpecificData(countryName) {
+            let SpecificData = [];
+            tmp = GetJSON_Simple(countryName);
+            SpecificData[0] = tmp[0][0]; //new cases - cured
+            SpecificData[1] = tmp[0][1]; // dates
+            for (let i = 0; i < SpecificData[1].length; i++) {
+                SpecificData[1][i] = SpecificData[1][i].slice(0, 10);
+            }
+            let sumCases = 0;
+            for (let i = 0; i < SpecificData[0].length; i++) {
+                sumCases = SpecificData[0][i] + sumCases;
+                SpecificData[0][i] = sumCases;
+            }
+            return SpecificData;
+        }
 
-        var ctx_simple = document.getElementById('myChart_simple'); 
-     var myChart_simple = new Chart(ctx_simple, {
-     type: 'line',
-     data: {
-         labels: simpleData[1],
-         datasets: [{
-             label: 'COUNT',
-             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-             borderColor: 'rgb(255, 99, 132)',
-             borderWidth: 1,
-             data: simpleData[0]
-         }
-         ]
-     },
-     options: {
-         scales: {
-             xAxes: [{
-                 stacked: true
-             }],
-             yAxes: [{
-                 stacked: false
-             }]
-         },
+        let defaultCountries = ["Poland", "Germany", "France", "Spain", "Russia", "China"];
+        testCountry = getSpecificData(defaultCountries[0]);
+        var ctx_simple = document.getElementById('myChart_simple');
 
-     }
- }); 
+        var myChart_simple = new Chart(ctx_simple, {
+            type: 'line',
+            data: {
+                labels: testCountry[1],
+                datasets: [{
+                    label: "Polska",
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    borderWidth: 1,
+                    data: testCountry[0],
+                }
+                ]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: false
+                        //ticks: {
+                        //    suggestedMax: 1000
+                        //}
+                    }]
+                },
+
+            }
+        });
 
     </script>
 }

@@ -28,10 +28,10 @@ namespace Covid.Controllers
  
         public IActionResult Wykres()
         {
-            return View("Wykres");
+            return View();
 
         }
-        public IActionResult NewToExisting(string country = "Poland")
+        public IActionResult NewToExisting(string country)
         {
             var countrySet = _context.Datas
                 .Where(b => b.countriesAndTerritories.Contains(country))
@@ -52,13 +52,12 @@ namespace Covid.Controllers
             list.Add(date);
             return Json(list);
         }
-
-        public IActionResult Data(string country="Poland")
+        // GET: Datasets/Details/
+        public IActionResult Data(string country)
         {
-
                 var countrySet = _context.Datas
                     .Where(b => b.countriesAndTerritories.Contains(country))
-                    .OrderByDescending(o=>o.DataRep).ToList();
+                    .OrderBy(o=>o.DataRep).ToList();
 
             var cases = countrySet.Select(o => o.cases).ToArray();
             var date = countrySet.Select(d => d.DataRep).ToArray();
